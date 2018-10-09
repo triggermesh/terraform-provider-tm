@@ -4,8 +4,8 @@
 [[projects]]
   name = "cloud.google.com/go"
   packages = ["compute/metadata"]
-  revision = "97efc2c9ffd9fe8ef47f7f3203dc60bbca547374"
-  version = "v0.28.0"
+  revision = "dfffe386c33fb24c34ee501e5723df5b97b98514"
+  version = "v0.30.0"
 
 [[projects]]
   name = "github.com/agext/levenshtein"
@@ -51,6 +51,7 @@
     "aws/request",
     "aws/session",
     "aws/signer/v4",
+    "internal/s3err",
     "internal/sdkio",
     "internal/sdkrand",
     "internal/sdkuri",
@@ -66,8 +67,8 @@
     "service/s3",
     "service/sts"
   ]
-  revision = "53e36ebb6b2c26d228ba9563d06caf306227f110"
-  version = "v1.15.46"
+  revision = "dd947f47decb37a7c3bee72501bfc790701ab5ad"
+  version = "v1.15.50"
 
 [[projects]]
   branch = "master"
@@ -161,16 +162,6 @@
   version = "v0.2.0"
 
 [[projects]]
-  branch = "master"
-  name = "github.com/gosuri/uitable"
-  packages = [
-    ".",
-    "util/strutil",
-    "util/wordwrap"
-  ]
-  revision = "36ee7e946282a3fb1cfecd476ddc9b35d8847e42"
-
-[[projects]]
   name = "github.com/hashicorp/errwrap"
   packages = ["."]
   revision = "8a6fb523712970c966eefc6b39ed2c5e74880354"
@@ -207,7 +198,7 @@
   branch = "master"
   name = "github.com/hashicorp/go-plugin"
   packages = ["."]
-  revision = "051b989fbf44280905aa30a5dde1cceab0261b9d"
+  revision = "314501b665e0b2cc71bbd829783179fc38840a85"
 
 [[projects]]
   name = "github.com/hashicorp/go-safetemp"
@@ -359,12 +350,6 @@
   version = "v0.1.1"
 
 [[projects]]
-  branch = "master"
-  name = "github.com/konsorten/go-windows-terminal-sequences"
-  packages = ["."]
-  revision = "b729f2633dfe35f4d1d8a32385f6685610ce1cb5"
-
-[[projects]]
   name = "github.com/mattn/go-colorable"
   packages = ["."]
   revision = "167de6bfdfba052fa6b2d3664c8f5272e23c9072"
@@ -375,12 +360,6 @@
   packages = ["."]
   revision = "6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c"
   version = "v0.0.4"
-
-[[projects]]
-  name = "github.com/mattn/go-runewidth"
-  packages = ["."]
-  revision = "ce7b0b5c7b45a81508558cd1dba6bb1e4ddb51bb"
-  version = "v0.0.3"
 
 [[projects]]
   name = "github.com/mitchellh/cli"
@@ -421,8 +400,8 @@
 [[projects]]
   name = "github.com/mitchellh/mapstructure"
   packages = ["."]
-  revision = "fe40af7a9c397fa3ddba203c38a5042c5d0475ad"
-  version = "v1.1.1"
+  revision = "3536a929edddb9a5b34bd6861dc4a9647cb459fe"
+  version = "v1.1.2"
 
 [[projects]]
   name = "github.com/mitchellh/reflectwalk"
@@ -460,12 +439,6 @@
   version = "v1.1.2"
 
 [[projects]]
-  name = "github.com/sirupsen/logrus"
-  packages = ["."]
-  revision = "a67f783a3814b8729bd2dac5780b5f78f8dbd64d"
-  version = "v1.1.0"
-
-[[projects]]
   name = "github.com/spf13/cobra"
   packages = ["."]
   revision = "ef82de70bb3f60c65fb8eebacbb2d122ef517385"
@@ -474,14 +447,19 @@
 [[projects]]
   name = "github.com/spf13/pflag"
   packages = ["."]
-  revision = "9a97c102cda95a86cec2345a6f09f55a939babf5"
-  version = "v1.0.2"
+  revision = "298182f68c66c05229eb03ac171abe6e309ee79a"
+  version = "v1.0.3"
 
 [[projects]]
-  branch = "terraform"
+  branch = "struct-update"
   name = "github.com/triggermesh/tm"
-  packages = ["cmd"]
-  revision = "2ee83f2988a2b2eef48ae72fd0c38bb69287c214"
+  packages = [
+    "cmd/delete",
+    "cmd/deploy",
+    "cmd/describe",
+    "pkg/client"
+  ]
+  revision = "f46f0a928bf1ad76d3d0954ff6bbe538aa11e230"
 
 [[projects]]
   name = "github.com/ulikunitz/xz"
@@ -540,7 +518,7 @@
     "internal/timeseries",
     "trace"
   ]
-  revision = "4dfa2610cdf3b287375bbba5b8f2a14d3b01d8de"
+  revision = "146acd28ed5894421fb5aac80ca93bc1b1f46f87"
 
 [[projects]]
   branch = "master"
@@ -552,7 +530,7 @@
     "jws",
     "jwt"
   ]
-  revision = "d2e6202438beef2727060aa7cabdd924d92ebfd9"
+  revision = "c57b0facaced709681d9f90397429b9430a74754"
 
 [[projects]]
   branch = "master"
@@ -561,7 +539,7 @@
     "unix",
     "windows"
   ]
-  revision = "e4b3c5e9061176387e7cea65e4dc5853801f3fb7"
+  revision = "4497e2df6f9e69048a54498c7affbbec3294ad47"
 
 [[projects]]
   name = "golang.org/x/text"
@@ -611,7 +589,7 @@
   branch = "master"
   name = "google.golang.org/genproto"
   packages = ["googleapis/rpc/status"]
-  revision = "c7e5094acea1ca1b899e2259d80a6b0f882f81f8"
+  revision = "af9cb2a35e7f169ec875002c1829c9b315cddc04"
 
 [[projects]]
   name = "google.golang.org/grpc"
@@ -795,10 +773,11 @@
     "util/jsonpath"
   ]
   revision = "23781f4d6632d88e869066eaebb743857aa1ef9b"
+  version = "v7.0.0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "d653817a15d8bd53facdbb81324c8bcf60b06f8187e8ffca8eaed75407cf6473"
+  inputs-digest = "5ceb68ee9b093e45e2061400a7dae793bbbd786512e470ca7601da8fbfdab7f0"
   solver-name = "gps-cdcl"
   solver-version = 1

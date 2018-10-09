@@ -2,7 +2,8 @@ package main
 
 import (
 	"github.com/hashicorp/terraform/helper/schema"
-	tm "github.com/triggermesh/tm/cmd"
+	"github.com/triggermesh/tm/pkg/client"
+	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
 )
 
 func Provider() *schema.Provider {
@@ -17,14 +18,19 @@ func Provider() *schema.Provider {
 			"namespace": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				DefaultFunc: schema.EnvDefaultFunc("TM_NAMESPACE", "default"),
+				Default:     "default",
 				Description: "kubernetes namespace for tm to work in",
+			},
+			"registry": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Description: "registry host address",
 			},
 		},
 
 		ResourcesMap: map[string]*schema.Resource{
-			"tm_service": resourceTmService(),
-			"tm_build":   nil,
+			"tm_service":       resourceTmService(),
+			"tm_buildtemplate": resourceTmBuildtemplate(),
 		},
 
 		DataSourcesMap: map[string]*schema.Resource{
@@ -35,8 +41,5 @@ func Provider() *schema.Provider {
 }
 
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
-	tm.CfgFile = d.Get("config_path").(string)
-	tm.Namespace = d.Get("namespace").(string)
-	tm.InitConfig()
-	return nil, nil
+	return client.NewClient(d.Get("config_path").(string), d.Get("namespace").(string), d.Get("registry").(string))
 }

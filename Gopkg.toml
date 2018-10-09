@@ -31,8 +31,12 @@
 
 [[constraint]]
   name = "github.com/triggermesh/tm"
-  branch = "terraform"
+  branch = "struct-update"
 
 [prune]
   go-tests = true
   unused-packages = true
+
+[[override]]
+  name = "k8s.io/client-go"
+  version = "7.0.0"
