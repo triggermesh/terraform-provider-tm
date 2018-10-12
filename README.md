@@ -1,13 +1,13 @@
 
 Terraform provider for knative resources based on [triggermesh CLI](https://github.com/triggermesh/tm)
 
-
 ### Terraform provider usage
 
-Plugin requires either [tm](https://github.com/triggermesh/tm/blob/master/README.md)/kubectl tools configured or be running in Kubernetes cluster environment. Golang is needed to build plugin binary and Terraform to run example manifest.
+Plugin requires either [tm](https://github.com/triggermesh/tm/blob/master/README.md) or kubectl tools configured or be running in a Kubernetes cluster environment. Golang is needed to build the plugin binary and Terraform to run example manifest.
 
 Sample `main.tf` will install buildtemplate, build and deploy nodejs application source-to-URL.   
 
+### Getting Started
 
 ```
 git clone https://github.com/triggermesh/terraform-provider-tm.git
@@ -22,3 +22,7 @@ After applying manifest you may check service status using tm CLI:
 ```
 tm -n default describe service tf-nodejs
 ```
+
+### Support
+
+We would love your feedback on this Terraform plugin so don't hesitate to let us know what is wrong and how we could improve it, just file an [issue](https://github.com/triggermesh/terraform-provider-tm/issues/new)
