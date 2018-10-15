@@ -1,4 +1,6 @@
 
+[![CircleCI](https://circleci.com/gh/triggermesh/terraform-provider-tm/tree/master.svg?style=svg)](https://circleci.com/gh/triggermesh/terraform-provider-tm/tree/master)
+
 Terraform provider for knative resources based on [triggermesh CLI](https://github.com/triggermesh/tm)
 
 ### Terraform provider usage
