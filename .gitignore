@@ -2,3 +2,4 @@
 *.tfstate
 *.tfstate.backup
 terraform-provider-tm
+crash.log

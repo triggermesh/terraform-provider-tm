@@ -1,6 +1,25 @@
+/*
+Copyright (c) 2018 TriggerMesh, Inc
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
 package main
 
 import (
+	"encoding/json"
+	"io/ioutil"
+
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/triggermesh/tm/cmd/delete"
 	"github.com/triggermesh/tm/cmd/deploy"
@@ -59,24 +78,24 @@ func resourceTmService() *schema.Resource {
 			},
 			"build_argument": &schema.Schema{
 				Optional: true,
+				Type:     schema.TypeList,
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Type: schema.TypeList,
 			},
 			"env": &schema.Schema{
 				Optional: true,
+				Type:     schema.TypeList,
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Type: schema.TypeList,
 			},
 			"labels": &schema.Schema{
 				Optional: true,
+				Type:     schema.TypeList,
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Type: schema.TypeList,
 			},
 		},
 	}
@@ -84,7 +103,10 @@ func resourceTmService() *schema.Resource {
 
 func resourceTmServiceCreate(d *schema.ResourceData, meta interface{}) error {
 	config := meta.(client.ClientSet)
-	name := d.Get("name").(string)
+	name, ok := d.Get("metadata.0.name").(string)
+	if !ok {
+		name = d.Get("name").(string)
+	}
 	var buildArgs, env, labels []string
 	for _, v := range d.Get("build_argument").([]interface{}) {
 		buildArgs = append(buildArgs, v.(string))
@@ -123,24 +145,39 @@ func resourceTmServiceCreate(d *schema.ResourceData, meta interface{}) error {
 	if err := s.DeployService([]string{name}, &config); err != nil {
 		return err
 	}
-	d.SetId(name)
+	d.SetId(config.Namespace + "/" + name)
 	return nil
 }
 
 func resourceTmServiceRead(d *schema.ResourceData, meta interface{}) error {
 	config := meta.(client.ClientSet)
-	name := d.Get("name").(string)
+	name, ok := d.Get("metadata.0.name").(string)
+	if !ok {
+		name = d.Get("name").(string)
+	}
+	var s Service
 	output, err := describe.Service(name, &config)
 	if err != nil {
 		return err
 	}
-	d.Set("data", string(output))
+	if err = json.Unmarshal(output, &s); err != nil {
+		return err
+	}
+	if err = ioutil.WriteFile("/tmp/out.log", output, 0644); err != nil {
+		return err
+	}
+	d.Set("metadata", flatMetadata(s.Metadata))
+	d.Set("spec", flatSpec(s.Spec))
+	d.Set("status", flatStatus(s.Status))
 	return nil
 }
 
 func resourceTmServiceDelete(d *schema.ResourceData, meta interface{}) error {
 	config := meta.(client.ClientSet)
-	name := d.Get("name").(string)
+	name, ok := d.Get("metadata.0.name").(string)
+	if !ok {
+		name = d.Get("name").(string)
+	}
 	if err := delete.Service([]string{name}, &config); err != nil {
 		return err
 	}
@@ -150,7 +187,10 @@ func resourceTmServiceDelete(d *schema.ResourceData, meta interface{}) error {
 
 func resourceTmServiceExists(d *schema.ResourceData, meta interface{}) (bool, error) {
 	config := meta.(client.ClientSet)
-	name := d.Get("name").(string)
+	name, ok := d.Get("metadata.0.name").(string)
+	if !ok {
+		name = d.Get("name").(string)
+	}
 	if _, err := describe.Service(name, &config); err != nil {
 		return false, nil
 	}
