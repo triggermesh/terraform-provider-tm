@@ -1,0 +1,44 @@
+version: 2
+jobs:
+  build:
+    working_directory: /go/src/github.com/triggermesh/terraform-provider-tm
+    docker:
+      - image: circleci/golang
+    steps:
+      - run:
+          name: Build binaries
+          command: |
+            go build
+      - persist_to_workspace:
+          root: /go/src/github.com/triggermesh/terraform-provider-tm
+          paths:
+            - terraform-provider-tm
+
+  release:
+    docker:
+      - image: circleci/golang
+    steps:
+      - attach_workspace:
+          at: /tmp/artifacts
+      - run:
+          name: "Publish Release on GitHub"
+          command: |
+            go get github.com/tcnksm/ghr
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} /tmp/artifacts
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+      - release:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^\d+\.\d+\.\d+$/
