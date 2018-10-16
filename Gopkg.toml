@@ -31,7 +31,7 @@
 
 [[constraint]]
   name = "github.com/triggermesh/tm"
-  branch = "struct-update"
+  branch = "master"
 
 [prune]
   go-tests = true
