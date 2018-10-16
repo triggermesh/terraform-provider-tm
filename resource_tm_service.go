@@ -167,7 +167,7 @@ func resourceTmServiceRead(d *schema.ResourceData, meta interface{}) error {
 		return err
 	}
 	d.Set("metadata", flatMetadata(s.Metadata))
-	d.Set("spec", flatSpec(s.Spec))
+	d.Set("spec", flatServiceSpec(s.ServiceSpec))
 	d.Set("status", flatStatus(s.Status))
 	return nil
 }

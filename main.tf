@@ -11,6 +11,11 @@ resource "tm_service" "main" {
     source = "https://github.com/triggermesh/nodejs-runtime.git"
 }
 
+resource "tm_route" "main" {
+    name = "${tm_service.main.name}"
+    revisions = ["${tm_service.main.name}-00001=50", "${tm_service.main.name}-00002=50"]
+}
+
 resource "tm_buildtemplate" "nodejs" {
     name = "runtime-nodejs"
     url = "https://raw.githubusercontent.com/triggermesh/nodejs-runtime/master/knative-build-template.yaml"

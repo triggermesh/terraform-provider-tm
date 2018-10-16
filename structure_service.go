@@ -16,25 +16,13 @@ limitations under the License.
 
 package main
 
-import (
-	"time"
-)
-
 type Service struct {
-	Metadata `json:"Metadata"`
-	Spec     `json:"Spec"`
-	Status   `json:"Status"`
+	Metadata    `json:"Metadata"`
+	Status      `json:"Status"`
+	ServiceSpec `json:"Spec"`
 }
 
-type Metadata struct {
-	Name              string    `json:"name"`
-	Namespace         string    `json:"namespace"`
-	UID               string    `json:"uid"`
-	ResourceVersion   string    `json:"resourceVersion"`
-	CreationTimestamp time.Time `json:"creationTimestamp"`
-}
-
-type Spec struct {
+type ServiceSpec struct {
 	RunLatest struct {
 		Configuration struct {
 			RevisionTemplate struct {
@@ -52,26 +40,6 @@ type Spec struct {
 			} `json:"revisionTemplate"`
 		} `json:"configuration"`
 	} `json:"runLatest"`
-}
-
-type Status struct {
-	Domain         string `json:"domain"`
-	DomainInternal string `json:"domainInternal"`
-	Conditions     `json:"conditions"`
-	Traffic        `json:"traffic"`
-}
-
-type Conditions []struct {
-	Type    string `json:"type"`
-	Status  string `json:"status"`
-	Reason  string `json:"reason,omitempty"`
-	Message string `json:"message,omitempty"`
-}
-
-type Traffic []struct {
-	RevisionName      string `json:"revisionName"`
-	ConfigurationName string `json:"configurationName"`
-	Percent           int    `json:"percent"`
 }
 
 func flatMetadata(m Metadata) []interface{} {
@@ -93,7 +61,7 @@ func flatStatus(s Status) []interface{} {
 	}}
 }
 
-func flatSpec(s Spec) []interface{} {
+func flatServiceSpec(s ServiceSpec) []interface{} {
 	return []interface{}{map[string]interface{}{
 		"image": s.RunLatest.Configuration.RevisionTemplate.Spec.Container.Image,
 	}}

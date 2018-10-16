@@ -143,7 +143,9 @@ func dataTmService() *schema.Resource {
 }
 
 func dataSourceKubernetesServiceRead(d *schema.ResourceData, meta interface{}) error {
-	d.SetId(meta.(client.ClientSet).Namespace + "/" + d.Get("metadata.0.name").(string))
+	namespace := meta.(client.ClientSet).Namespace
+	name := d.Get("metadata.0.name").(string)
+	d.SetId(namespace + "/" + name)
 
 	return resourceTmServiceRead(d, meta)
 }

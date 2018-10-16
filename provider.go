@@ -17,10 +17,40 @@ limitations under the License.
 package main
 
 import (
+	"time"
+
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/triggermesh/tm/pkg/client"
 	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
 )
+
+type Metadata struct {
+	Name              string    `json:"name"`
+	Namespace         string    `json:"namespace"`
+	UID               string    `json:"uid"`
+	ResourceVersion   string    `json:"resourceVersion"`
+	CreationTimestamp time.Time `json:"creationTimestamp"`
+}
+
+type Status struct {
+	Domain         string `json:"domain"`
+	DomainInternal string `json:"domainInternal"`
+	Conditions     `json:"conditions"`
+	Traffic        `json:"traffic"`
+}
+
+type Conditions []struct {
+	Type    string `json:"type"`
+	Status  string `json:"status"`
+	Reason  string `json:"reason,omitempty"`
+	Message string `json:"message,omitempty"`
+}
+
+type Traffic []struct {
+	RevisionName      string `json:"revisionName"`
+	ConfigurationName string `json:"configurationName"`
+	Percent           int    `json:"percent"`
+}
 
 func Provider() *schema.Provider {
 	return &schema.Provider{
@@ -47,6 +77,7 @@ func Provider() *schema.Provider {
 		ResourcesMap: map[string]*schema.Resource{
 			"tm_service":       resourceTmService(),
 			"tm_buildtemplate": resourceTmBuildtemplate(),
+			"tm_route":         resourceTmRoute(),
 		},
 
 		DataSourcesMap: map[string]*schema.Resource{

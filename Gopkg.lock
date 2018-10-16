@@ -451,15 +451,16 @@
   version = "v1.0.3"
 
 [[projects]]
-  branch = "struct-update"
+  branch = "master"
   name = "github.com/triggermesh/tm"
   packages = [
     "cmd/delete",
     "cmd/deploy",
     "cmd/describe",
+    "cmd/set",
     "pkg/client"
   ]
-  revision = "f46f0a928bf1ad76d3d0954ff6bbe538aa11e230"
+  revision = "698968694fe8d7196f0dcad30f681c7e8cf289e9"
 
 [[projects]]
   name = "github.com/ulikunitz/xz"
@@ -778,6 +779,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "5ceb68ee9b093e45e2061400a7dae793bbbd786512e470ca7601da8fbfdab7f0"
+  inputs-digest = "e98559da794b2afc6903076b93c60c4e7ffa94875938976d77200081c0a164de"
   solver-name = "gps-cdcl"
   solver-version = 1

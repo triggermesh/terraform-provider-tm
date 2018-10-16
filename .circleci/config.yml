@@ -26,6 +26,7 @@ jobs:
     docker:
       - image: circleci/golang
     steps:
+      - checkout
       - attach_workspace:
           at: /tmp/artifacts
       - run:
