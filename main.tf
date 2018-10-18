@@ -13,7 +13,7 @@ resource "tm_service" "main" {
 
 resource "tm_route" "main" {
     name = "${tm_service.main.name}"
-    revisions = ["${tm_service.main.name}-00001=50", "${tm_service.main.name}-00002=50"]
+    revisions = ["${tm_service.main.name}-00001=100"]
 }
 
 resource "tm_buildtemplate" "nodejs" {

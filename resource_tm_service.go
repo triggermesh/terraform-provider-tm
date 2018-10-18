@@ -70,6 +70,7 @@ func resourceTmService() *schema.Resource {
 			},
 			"image_tag": &schema.Schema{
 				Optional: true,
+				Default:  "latest",
 				Type:     schema.TypeString,
 			},
 			"build_template": &schema.Schema{
