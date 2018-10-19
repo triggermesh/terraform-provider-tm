@@ -78,6 +78,7 @@ func Provider() *schema.Provider {
 			"tm_service":       resourceTmService(),
 			"tm_buildtemplate": resourceTmBuildtemplate(),
 			"tm_route":         resourceTmRoute(),
+			"tm_build":         resourceTmBuild(),
 		},
 
 		DataSourcesMap: map[string]*schema.Resource{

@@ -25,6 +25,8 @@ After applying manifest you may check service status using tm CLI:
 tm -n default describe service tf-nodejs
 ```
 
+If you're updating already existing tm provider, please don't forget to run `go build` and `terraform init` commands after pulling latest changes
+
 ### Support
 
 We would love your feedback on this Terraform plugin so don't hesitate to let us know what is wrong and how we could improve it, just file an [issue](https://github.com/triggermesh/terraform-provider-tm/issues/new)

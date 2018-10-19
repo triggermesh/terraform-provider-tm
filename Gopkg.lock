@@ -67,8 +67,8 @@
     "service/s3",
     "service/sts"
   ]
-  revision = "dd947f47decb37a7c3bee72501bfc790701ab5ad"
-  version = "v1.15.50"
+  revision = "2324d8a7db41970a80d19791bd30b94f632ce0cc"
+  version = "v1.15.58"
 
 [[projects]]
   branch = "master"
@@ -103,8 +103,8 @@
 [[projects]]
   name = "github.com/go-ini/ini"
   packages = ["."]
-  revision = "7b294651033cd7d9e7f0d9ffa1b75ed1e198e737"
-  version = "v1.38.3"
+  revision = "9c8236e659b76e87bf02044d06fde8683008ff3e"
+  version = "v1.39.0"
 
 [[projects]]
   name = "github.com/gogo/protobuf"
@@ -291,7 +291,7 @@
   branch = "master"
   name = "github.com/hashicorp/yamux"
   packages = ["."]
-  revision = "7221087c3d281fda5f794e28c2ea4c6e4d5c4558"
+  revision = "2f1d1f20f75d5404f53b9edf6b53ed5505508675"
 
 [[projects]]
   branch = "master"
@@ -460,7 +460,7 @@
     "cmd/set",
     "pkg/client"
   ]
-  revision = "698968694fe8d7196f0dcad30f681c7e8cf289e9"
+  revision = "0d21a67aaca471ce854c280ba32a69eef4b54728"
 
 [[projects]]
   name = "github.com/ulikunitz/xz"
@@ -485,7 +485,7 @@
     "cty/json",
     "cty/set"
   ]
-  revision = "d9b87d891d0b42399ce5bab2f87ad2860ca0239c"
+  revision = "01c5aba823a6c91fe3bc287fd6e493ca717a64b8"
 
 [[projects]]
   branch = "master"
@@ -502,7 +502,7 @@
     "openpgp/s2k",
     "ssh/terminal"
   ]
-  revision = "e3636079e1a4c1f337f212cc5cd2aca108f6c900"
+  revision = "0c41d7ab0a0ee717d4590a44bcb987dfd9e183eb"
 
 [[projects]]
   branch = "master"
@@ -519,7 +519,7 @@
     "internal/timeseries",
     "trace"
   ]
-  revision = "146acd28ed5894421fb5aac80ca93bc1b1f46f87"
+  revision = "04a2e542c03f1d053ab3e4d6e5abcd4b66e2be8e"
 
 [[projects]]
   branch = "master"
@@ -531,7 +531,7 @@
     "jws",
     "jwt"
   ]
-  revision = "c57b0facaced709681d9f90397429b9430a74754"
+  revision = "9dcd33a902f40452422c2367fefcb95b54f9f8f8"
 
 [[projects]]
   branch = "master"
@@ -540,7 +540,7 @@
     "unix",
     "windows"
   ]
-  revision = "4497e2df6f9e69048a54498c7affbbec3294ad47"
+  revision = "8f1d3d21f81be6e86ebcd6febee89c89bc50719f"
 
 [[projects]]
   name = "golang.org/x/text"
@@ -590,7 +590,7 @@
   branch = "master"
   name = "google.golang.org/genproto"
   packages = ["googleapis/rpc/status"]
-  revision = "af9cb2a35e7f169ec875002c1829c9b315cddc04"
+  revision = "94acd270e44e65579b9ee3cdab25034d33fed608"
 
 [[projects]]
   name = "google.golang.org/grpc"
