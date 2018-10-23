@@ -35,7 +35,6 @@ import (
 type Buildtemplate struct {
 	URL  string
 	Path string
-	Args []string
 }
 
 const (

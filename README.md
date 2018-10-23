@@ -5,9 +5,7 @@ Terraform provider for knative resources based on [triggermesh CLI](https://gith
 
 ### Terraform provider usage
 
-Plugin requires either [tm](https://github.com/triggermesh/tm/blob/master/README.md) or [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) tools configured or be running in a Kubernetes cluster environment. Golang is needed to build the plugin binary and [Terraform](https://www.terraform.io/intro/getting-started/install.html) to run example manifest.
-
-Sample `main.tf` will install buildtemplate, build and deploy nodejs application source-to-URL.   
+Plugin requires either [tm](https://github.com/triggermesh/tm/blob/master/README.md) or [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) tools configured or be running in a Kubernetes cluster environment. Golang is needed to build the plugin binary and [Terraform](https://www.terraform.io/intro/getting-started/install.html) to run example manifests.
 
 ### Getting Started
 
@@ -16,8 +14,22 @@ git clone https://github.com/triggermesh/terraform-provider-tm.git
 cd terraform-provider-tm
 go build
 terraform init
-terraform apply
 ```
+
+Repository contains `examples` directory with manifests for different services, for example you may deploy
+[qrcode](https://github.com/faas-and-furious/qrcode) service by running:
+
+```
+terraform apply examples/qrcode/
+```
+
+Terraform will return domain name which will be available in a minutes after service creation:
+
+```
+curl tf-qrcode.default.example.com/function/qrcode --data "Triggermesh" > qrcode.png
+```
+
+Note: do not apply more then one example manifest at the same time; destroy old resource before creating new one. 
 
 After applying manifest you may check service status using tm CLI:
 

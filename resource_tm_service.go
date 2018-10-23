@@ -18,7 +18,7 @@ package main
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"time"
 
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/triggermesh/tm/cmd/delete"
@@ -62,6 +62,7 @@ func resourceTmService() *schema.Resource {
 			},
 			"revision": &schema.Schema{
 				Optional: true,
+				Default:  "master",
 				Type:     schema.TypeString,
 			},
 			"pull_policy": &schema.Schema{
@@ -157,15 +158,15 @@ func resourceTmServiceRead(d *schema.ResourceData, meta interface{}) error {
 		name = d.Get("name").(string)
 	}
 	var s Service
-	output, err := describe.Service(name, &config)
-	if err != nil {
-		return err
-	}
-	if err = json.Unmarshal(output, &s); err != nil {
-		return err
-	}
-	if err = ioutil.WriteFile("/tmp/out.log", output, 0644); err != nil {
-		return err
+	for s.Status.Domain == "" {
+		output, err := describe.Service(name, &config)
+		if err != nil {
+			return err
+		}
+		if err = json.Unmarshal(output, &s); err != nil {
+			return err
+		}
+		time.Sleep(3 * time.Second)
 	}
 	d.Set("metadata", flatMetadata(s.Metadata))
 	d.Set("spec", flatServiceSpec(s.ServiceSpec))

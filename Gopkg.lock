@@ -51,6 +51,7 @@
     "aws/request",
     "aws/session",
     "aws/signer/v4",
+    "internal/ini",
     "internal/s3err",
     "internal/sdkio",
     "internal/sdkrand",
@@ -67,8 +68,8 @@
     "service/s3",
     "service/sts"
   ]
-  revision = "2324d8a7db41970a80d19791bd30b94f632ce0cc"
-  version = "v1.15.58"
+  revision = "58fbceeaf77b78c7aa2d44b7a93431eba0468917"
+  version = "v1.15.60"
 
 [[projects]]
   branch = "master"
@@ -99,12 +100,6 @@
   packages = ["."]
   revision = "0ca9ea5df5451ffdf184b4428c902747c2c11cd7"
   version = "v1.0.0"
-
-[[projects]]
-  name = "github.com/go-ini/ini"
-  packages = ["."]
-  revision = "9c8236e659b76e87bf02044d06fde8683008ff3e"
-  version = "v1.39.0"
 
 [[projects]]
   name = "github.com/gogo/protobuf"
@@ -284,8 +279,8 @@
     "tfdiags",
     "version"
   ]
-  revision = "6dfc4d748de9cda23835bc5704307ed45e839622"
-  version = "v0.11.8"
+  revision = "4e44b41c8bc1b533d14f9939690adf09e3d2a2be"
+  version = "v0.11.9"
 
 [[projects]]
   branch = "master"
@@ -435,8 +430,8 @@
     "cmd/install",
     "match"
   ]
-  revision = "dcda3199365ca2a5f24aea4c42aa56f6a197d117"
-  version = "v1.1.2"
+  revision = "ffc2cf5e958af5ac4156a886153c7cadd24a521a"
+  version = "v1.2.0"
 
 [[projects]]
   name = "github.com/spf13/cobra"
@@ -460,7 +455,7 @@
     "cmd/set",
     "pkg/client"
   ]
-  revision = "0d21a67aaca471ce854c280ba32a69eef4b54728"
+  revision = "e2f15a5fece85f3046f03681b3fc6ab4f70f56d5"
 
 [[projects]]
   name = "github.com/ulikunitz/xz"
@@ -540,7 +535,7 @@
     "unix",
     "windows"
   ]
-  revision = "8f1d3d21f81be6e86ebcd6febee89c89bc50719f"
+  revision = "8a28ead16f52c8aaeffbf79239b251dfdf6c4f96"
 
 [[projects]]
   name = "golang.org/x/text"
