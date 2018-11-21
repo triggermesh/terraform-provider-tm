@@ -14,7 +14,7 @@ resource "tm_service" "nodeinfo" {
 
 resource "tm_buildtemplate" "kaniko" {
     name = "kaniko"
-    url = "https://gist.githubusercontent.com/tzununbekov/cb89f19c4339b39fe0d8b4730523cdca/raw/20bd381cb4a8a9fc53e5261c40d574ff8a78fa6e/kaniko.yaml"
+    url = "https://raw.githubusercontent.com/triggermesh/build-templates/master/kaniko/kaniko.yaml"
 }
 
 data "tm_service" "nodeinfo" {

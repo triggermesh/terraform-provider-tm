@@ -1,5 +1,4 @@
-
-[![CircleCI](https://circleci.com/gh/triggermesh/terraform-provider-tm/tree/master.svg?style=svg)](https://circleci.com/gh/triggermesh/terraform-provider-tm/tree/master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/triggermesh/terraform-provider-tm)](https://goreportcard.com/report/github.com/triggermesh/terraform-provider-tm) [![CircleCI](https://circleci.com/gh/triggermesh/terraform-provider-tm/tree/master.svg?style=svg)](https://circleci.com/gh/triggermesh/terraform-provider-tm/tree/master)
 
 Terraform provider for knative resources based on [triggermesh CLI](https://github.com/triggermesh/tm)
 
@@ -22,7 +21,6 @@ Repository contains `examples` directory with manifests for different services, 
 ```
 terraform apply examples/qrcode/
 ```
-
 Terraform will return domain name which will be available in a minutes after service creation:
 
 ```
@@ -30,12 +28,6 @@ curl tf-qrcode.default.example.com/function/qrcode --data "Triggermesh" > qrcode
 ```
 
 Note: do not apply more then one example manifest at the same time; destroy old resource before creating new one. 
-
-After applying manifest you may check service status using tm CLI:
-
-```
-tm -n default describe service tf-nodejs
-```
 
 If you're updating already existing tm provider, please don't forget to run `go build` and `terraform init` commands after pulling latest changes
 
