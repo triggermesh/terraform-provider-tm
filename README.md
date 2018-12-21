@@ -1,4 +1,4 @@
-[![Go Report Card](https://goreportcard.com/badge/github.com/triggermesh/terraform-provider-tm)](https://goreportcard.com/report/github.com/triggermesh/terraform-provider-tm) [![CircleCI](https://circleci.com/gh/triggermesh/terraform-provider-tm/tree/master.svg?style=svg)](https://circleci.com/gh/triggermesh/terraform-provider-tm/tree/master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/triggermesh/terraform-provider-tm)](https://goreportcard.com/report/github.com/triggermesh/terraform-provider-tm) [![CircleCI](https://circleci.com/gh/triggermesh/terraform-provider-tm/tree/master.svg?style=shield)](https://circleci.com/gh/triggermesh/terraform-provider-tm/tree/master)
 
 Terraform provider for knative resources based on [triggermesh CLI](https://github.com/triggermesh/tm)
 
